@@ -1,7 +1,7 @@
 Logout
 ======
 
-..  code-block::
+..  code-block:: none
 
     POST http://sjournal.milestns.beget.tech/api/v1/logout
 
@@ -11,11 +11,11 @@ Logout
 Успешный выход из системы
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  code-block::
+..  code-block:: none
 
     Status: 200
 
-..  code-block::
+..  code-block:: none
 
     {
         "status": true,

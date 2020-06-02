@@ -1,14 +1,14 @@
 Регистрация
 ===========
 
-..  code-block::
+..  code-block:: none
 
     POST http://sjournal.milestns.beget.tech/api/v1/register
 
 Пример запроса
 --------------
 
-..  code-block::
+..  code-block:: none
 
     {
         "email": "api@test.com",
@@ -22,7 +22,7 @@
 Правила валидации
 -----------------
 
-..  code-block:: 
+..  code-block:: none
 
     'email' => 'required|string|email|max:191|unique:app_users', 
     'password' => 'required|string|min:8|confirmed', 
@@ -36,11 +36,11 @@
 Успешная регистрация
 ~~~~~~~~~~~~~~~~~~~~
 
-..  code-block::
+..  code-block:: none
 
     Status: 200
 
-..  code-block::
+..  code-block:: none
 
     { 
         "status": true, 
@@ -55,11 +55,11 @@
 Ошибки валидации
 ~~~~~~~~~~~~~~~~
 
-..  code-block::
+..  code-block:: none
 
     Status: 200
 
-..  code-block::
+..  code-block:: none
 
     { 
         "status": false, 

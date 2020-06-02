@@ -3,14 +3,14 @@
 Login
 =====
 
-..  code-block::
+..  code-block:: none
 
     POST http://sjournal.milestns.beget.tech/api/v1/login
 
 Пример запроса
 --------------
 
-..  code-block::
+..  code-block:: none
 
     {
         "email": "api9@example.com",
@@ -23,7 +23,7 @@ Login
 Правила валидации
 -----------------
 
-..  code-block:: 
+..  code-block:: none
 
     'email' => 'required|string|email|max:191',
     'password' => 'required|string|min:8',
@@ -37,11 +37,11 @@ Login
 Успешная авторизация
 ~~~~~~~~~~~~~~~~~~~~
 
-..  code-block::
+..  code-block:: none
 
     Status: 200
 
-..  code-block::
+..  code-block:: none
 
     { 
         "status": true, 
@@ -56,11 +56,11 @@ Login
 Ошибки валидации
 ~~~~~~~~~~~~~~~~
 
-..  code-block::
+..  code-block:: none
 
     Status: 200
 
-..  code-block::
+..  code-block:: none
 
     { 
         "status": false, 
@@ -74,11 +74,11 @@ Login
 Неверный логин/пароль
 ~~~~~~~~~~~~~~~~~~~~~
 
-..  code-block::
+..  code-block:: none
 
     Status: 200
 
-..  code-block::
+..  code-block:: none
 
     { 
         "status": false, 
@@ -91,11 +91,11 @@ Login
 Вход с другого устройства
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  code-block::
+..  code-block:: none
 
     Status: 200
 
-..  code-block::
+..  code-block:: none
 
     { 
         "status": false, 
