@@ -6,8 +6,6 @@
 Документация для проекта Smart Newspapers
 =========================================
 
-Автодеплой
-
 ..  toctree::
     :maxdepth: 2
     :caption: Авторизация
@@ -16,5 +14,7 @@
     login
     logout
     tokens
+    password_reset_step_1
+    password_reset_step_2
     
    

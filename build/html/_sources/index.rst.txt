@@ -14,5 +14,7 @@
     login
     logout
     tokens
+    password_reset_step_1
+    password_reset_step_2
     
    

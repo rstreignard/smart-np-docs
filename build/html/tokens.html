@@ -159,7 +159,7 @@
 <div class="section" id="id2">
 <h2>Авторизация с помощью токена<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Полученный при авторизации/регистрации токен должен передаваться в заголовоке следующим образом:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Authorization</span><span class="p">:</span> <span class="n">Bearer</span> <span class="p">[</span><span class="n">token</span><span class="p">]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Authorization: Bearer [token]
 </pre></div>
 </div>
 </div>
@@ -167,16 +167,16 @@
 <h2>Обработка ошибок<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
 <p>По умолчанию, время жизни токена составляет 30 дней. По истечению этого срока, а так же при любых других проблемах, связанных с его чтением (попадание в блэклист, невозможность парсинга закодированной в нем информации, и т.д), попытка его использования приведет к приведенной ниже ошибке.</p>
 <p>Текст ошибки <code class="docutils literal notranslate"><span class="pre">errorMessage</span></code>, в отличии от <code class="docutils literal notranslate"><span class="pre">статуса</span></code>, может меняться и, по возможности, должен быть залогирован на этапах тестирования, для удобства отлавливания багов.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">401</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 401
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;errorMessage&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;Token Signature could not be verified.&quot;</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">null</span>
-<span class="p">}</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;status&quot;: false,
+    &quot;errorMessage&quot;: [
+        &quot;Token Signature could not be verified.&quot;
+    ],
+    &quot;data&quot;: null
+}
 </pre></div>
 </div>
 <p>В случае возникновения ошибки, необходимо попытаться снова авторизовать пользователя методом <a class="reference internal" href="login.html#login-label"><span class="std std-ref">Login</span></a></p>
