@@ -17,4 +17,16 @@
     password_reset_step_1
     password_reset_step_2
     
+..  toctree::
+    :maxdepth: 2
+    :caption: Локализация
+
+    localization
+
+..  toctree::
+    :maxdepth: 2
+    :caption: Контент
+
+    code_activation
+    my_subscriptions
    

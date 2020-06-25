@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Поиск &mdash; документация Smart Newspapers 1.0</title>
+  <title>Локализация &mdash; документация Smart Newspapers 1.0</title>
   
 
   
@@ -26,7 +26,6 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script src="_static/translations.js"></script>
-        <script src="_static/searchtools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -36,7 +35,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
-    <link rel="search" title="Поиск" href="#" /> 
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Активация кода" href="code_activation.html" />
+    <link rel="prev" title="Сброс пароля. Шаг 2" href="password_reset_step_2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -63,7 +64,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -90,8 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="password_reset_step_2.html">Сброс пароля. Шаг 2</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Локализация</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="localization.html">Локализация</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Локализация</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Примеры ответов</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Контент</span></p>
 <ul>
@@ -142,12 +146,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Поиск</li>
+      <li>Локализация</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/localization.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -159,24 +165,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="id1">
+<h1>Локализация<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Локализация контента и возвращаемых ошибок осуществляется путем передачи в заголовке параметра <code class="docutils literal notranslate"><span class="pre">Accept-Language</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Accept-Language: ru / uk
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В случае отсутствия в запросе данного заголовка, сервер возвращает данные по умолчанию на русском языке</p>
+</div>
+<div class="section" id="id2">
+<h2>Примеры ответов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Accept-Language: ru
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;status&quot;: true,
+    &quot;errorMessage&quot;: null,
+    &quot;data&quot;: [
+        {
+            &quot;title&quot;: &quot;Семейный&quot;,
+            &quot;subscription_end_date&quot;: &quot;22 июля 2020&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Мужской&quot;,
+            &quot;subscription_end_date&quot;: &quot;21 сентября 2020&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Детский&quot;,
+            &quot;subscription_end_date&quot;: &quot;06 июля 2020&quot;
+        }
+    ]
+}
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Accept-Language: uk
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;status&quot;: true,
+    &quot;errorMessage&quot;: null,
+    &quot;data&quot;: [
+        {
+            &quot;title&quot;: &quot;Сімейний&quot;,
+            &quot;subscription_end_date&quot;: &quot;22 липня 2020&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Мужской&quot;,
+            &quot;subscription_end_date&quot;: &quot;21 вересня 2020&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Дитячий&quot;,
+            &quot;subscription_end_date&quot;: &quot;06 липня 2020&quot;
+        }
+    ]
+}
+</pre></div>
+</div>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="code_activation.html" class="btn btn-neutral float-right" title="Активация кода" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="password_reset_step_2.html" class="btn btn-neutral float-left" title="Сброс пароля. Шаг 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -209,14 +273,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

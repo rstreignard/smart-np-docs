@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Неверный токен &mdash; документация Smart Newspapers 1.0</title>
+  <title>Мои подписки &mdash; документация Smart Newspapers 1.0</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="prev" title="Logout" href="logout.html" /> 
+    <link rel="prev" title="Активация кода" href="code_activation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,11 +81,25 @@
             
             
               <p class="caption"><span class="caption-text">Авторизация</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="registration.html">Регистрация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="login.html">Login</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logout.html">Logout</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Неверный токен</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tokens.html">Применение токенов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="password_reset_step_1.html">Сброс пароля. Шаг 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="password_reset_step_2.html">Сброс пароля. Шаг 2</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Локализация</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="localization.html">Локализация</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Контент</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="code_activation.html">Активация кода</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Мои подписки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Примеры ответов</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -131,13 +145,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Неверный токен</li>
+      <li>Мои подписки</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/invalid_token.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/my_subscriptions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -151,22 +165,36 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>Неверный токен<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<p>По умолчанию, время жизни токена составляет 30 дней. По истечению этого срока, а так же при любых других проблемах, связанных с его чтением (попадание в блэклист, невозможность парсинга закодированной в нем информации, и т.д), попытка его использования приведет к приведенной ниже ошибке.</p>
-<p>Текст ошибки <code class="docutils literal notranslate"><span class="pre">errorMessage</span></code>, в отличии от <code class="docutils literal notranslate"><span class="pre">статуса</span></code>, может меняться и, по возможности, должен быть залогирован на этапах тестирования, для удобства отлавливания багов.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Status</span><span class="p">:</span> <span class="mi">401</span>
+<h1>Мои подписки<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GET http://sjournal.milestns.beget.tech/api/v1/user/subscriptions
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;errorMessage&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;Token Signature could not be verified.&quot;</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">null</span>
-<span class="p">}</span>
+<div class="section" id="id2">
+<h2>Примеры ответов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
 </pre></div>
 </div>
-<p>В случае возникновения ошибки, необходимо попытаться заново авторизовать пользователя <a class="reference internal" href="login.html#login-label"><span class="std std-ref">Login</span></a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;status&quot;: true,
+    &quot;errorMessage&quot;: null,
+    &quot;data&quot;: [
+        {
+            &quot;title&quot;: &quot;Семейный&quot;,
+            &quot;subscription_end_date&quot;: &quot;22 июля 2020&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Мужской&quot;,
+            &quot;subscription_end_date&quot;: &quot;21 сентября 2020&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Детский&quot;,
+            &quot;subscription_end_date&quot;: &quot;06 июля 2020&quot;
+        }
+    ]
+}
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -178,7 +206,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="logout.html" class="btn btn-neutral float-left" title="Logout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="code_activation.html" class="btn btn-neutral float-left" title="Активация кода" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

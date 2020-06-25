@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Login &mdash; документация Smart Newspapers 1.0</title>
+  <title>Активация кода &mdash; документация Smart Newspapers 1.0</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="Logout" href="logout.html" />
-    <link rel="prev" title="Регистрация" href="registration.html" /> 
+    <link rel="next" title="Мои подписки" href="my_subscriptions.html" />
+    <link rel="prev" title="Локализация" href="localization.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,20 +82,9 @@
             
             
               <p class="caption"><span class="caption-text">Авторизация</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="registration.html">Регистрация</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Login</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Пример запроса</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Правила валидации</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Примеры ответов</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Успешная авторизация</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Ошибки валидации</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Неверный логин/пароль</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Вход с другого устройства</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="login.html">Login</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logout.html">Logout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tokens.html">Применение токенов</a></li>
 <li class="toctree-l1"><a class="reference internal" href="password_reset_step_1.html">Сброс пароля. Шаг 1</a></li>
@@ -106,8 +95,19 @@
 <li class="toctree-l1"><a class="reference internal" href="localization.html">Локализация</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Контент</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="code_activation.html">Активация кода</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Активация кода</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Пример запроса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Примеры ответов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Успешная активация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Попытка активации неверного кода</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Попытка активации использованного кода</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Попытка активации просроченного кода</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Попытка активации при наличии активной подписки</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="my_subscriptions.html">Мои подписки</a></li>
 </ul>
 
@@ -154,13 +154,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Login</li>
+      <li>Активация кода</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/login.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/code_activation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,37 +173,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="login">
-<span id="login-label"></span><h1>Login<a class="headerlink" href="#login" title="Ссылка на этот заголовок">¶</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>POST http://sjournal.milestns.beget.tech/api/v1/login
+  <div class="section" id="id1">
+<h1>Активация кода<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>POST http://sjournal.milestns.beget.tech/api/v1/user/code-activate
 </pre></div>
-</div>
-<div class="section" id="id1">
-<h2>Пример запроса<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
-    &quot;email&quot;: &quot;api9@example.com&quot;,
-    &quot;password&quot;: &quot;password&quot;,
-    &quot;device_name&quot;: &quot;Iphone 11&quot;,
-    &quot;device_os&quot;: &quot;iOS&quot;,
-    &quot;device_code&quot;: &quot;72f316e6-b353-11ea-cc37-0242ac130002&quot;
-}
-</pre></div>
-</div>
 </div>
 <div class="section" id="id2">
-<h2>Правила валидации<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;email&#39; =&gt; &#39;required|string|email|max:191&#39;,
-&#39;password&#39; =&gt; &#39;required|string|min:8&#39;,
-&#39;device_name&#39; =&gt; &#39;required|string|max:191&#39;,
-&#39;device_os&#39; =&gt; &#39;required|string|max:191|in:Android,iOS&#39;,
-&#39;device_code&#39; =&gt; &#39;required|string|max:191&#39;,
+<h2>Пример запроса<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;code&quot;: &quot;LEdTu9YkId&quot;
+}
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>Примеры ответов<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="section" id="id4">
-<h3>Успешная авторизация<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<h3>Успешная активация<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
 </pre></div>
 </div>
@@ -211,24 +197,21 @@
     &quot;status&quot;: true,
     &quot;errorMessage&quot;: null,
     &quot;data&quot;: {
-        &quot;access_token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL3Nqb3VybmFsXC9wdWJsaWNcL2FwaVwvdjFcL3JlZ2lzdGVyIiwiaWF0IjoxNTkxMDA4NTAxLCJleHAiOjE1OTEwMTIxMDEsIm5iZiI6MTU5MTAwODUwMSwianRpIjoiV3llMnFJU2dNb004WUV5MCIsInN1YiI6MzEsInBydiI6ImIzYzUwMmZlOGU1OThmYmIyNDUxNDNkM2RmYzQwMmY3NTEyZTdjYmUifQ.WU1qaLk42rsB7tQfven_xoysVZrHB_GJkQRkzf6dVK8&quot;,
-        &quot;token_type&quot;: &quot;bearer&quot;,
-        &quot;expires_in&quot;: 3600
+        &quot;message&quot;: &quot;Введенный код успешно активирован&quot;
     }
 }
 </pre></div>
 </div>
 </div>
 <div class="section" id="id5">
-<h3>Ошибки валидации<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+<h3>Попытка активации неверного кода<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
     &quot;status&quot;: false,
     &quot;errorMessage&quot;: [
-        &quot;Поле E-Mail адрес должно быть действительным электронным адресом.&quot;,
-        &quot;Поле Пароль обязательно для заполнения.&quot;
+        &quot;Введен неверный или недействительный код&quot;
     ],
     &quot;data&quot;: null
 }
@@ -236,14 +219,14 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3>Неверный логин/пароль<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+<h3>Попытка активации использованного кода<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
     &quot;status&quot;: false,
     &quot;errorMessage&quot;: [
-        &quot;Неверный логин или пароль.&quot;,
+        &quot;Введеный код уже был активирован раннее&quot;
     ],
     &quot;data&quot;: null
 }
@@ -251,14 +234,29 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h3>Вход с другого устройства<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+<h3>Попытка активации просроченного кода<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
     &quot;status&quot;: false,
     &quot;errorMessage&quot;: [
-        &quot;Для доступа к контенту, авторизуйтесь на устройстве с которого проходили регистрацию или обратитесь в Поддержку.&quot;,
+        &quot;Срок действия введенного кода истек&quot;
+    ],
+    &quot;data&quot;: null
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>Попытка активации при наличии активной подписки<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;status&quot;: false,
+    &quot;errorMessage&quot;: [
+        &quot;Введенный код не был активирован. У пользователя имеется активная подписка на данный пакет&quot;
     ],
     &quot;data&quot;: null
 }
@@ -276,10 +274,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="logout.html" class="btn btn-neutral float-right" title="Logout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="my_subscriptions.html" class="btn btn-neutral float-right" title="Мои подписки" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="registration.html" class="btn btn-neutral float-left" title="Регистрация" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="localization.html" class="btn btn-neutral float-left" title="Локализация" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
