@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Мои подписки &mdash; документация Smart Newspapers 1.0</title>
+  <title>Выпуск издания &mdash; документация Smart Newspapers 1.0</title>
   
 
   
@@ -36,8 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="Выпуски издания по подписке" href="packet_magazine_issues.html" />
-    <link rel="prev" title="Активация кода" href="code_activation.html" /> 
+    <link rel="prev" title="Выпуски издания по подписке" href="packet_magazine_issues.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,12 +96,15 @@
 <p class="caption"><span class="caption-text">Контент</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="code_activation.html">Активация кода</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Мои подписки</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Примеры ответов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="my_subscriptions.html">Мои подписки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packet_magazine_issues.html">Выпуски издания по подписке</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Выпуск издания</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Примеры ответов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Успешный ответ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="packet_magazine_issues.html">Выпуски издания по подписке</a></li>
-<li class="toctree-l1"><a class="reference internal" href="magazine_issue.html">Выпуск издания</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -148,13 +150,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Мои подписки</li>
+      <li>Выпуск издания</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/my_subscriptions.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/magazine_issue.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,34 +170,45 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>Мои подписки<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GET http://sjournal.milestns.beget.tech/api/v1/user/subscriptions
+<h1>Выпуск издания<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GET http://sjournal.milestns.beget.tech/api/v1/magazine-issues/{magazin_issue_id}
 </pre></div>
 </div>
 <div class="section" id="id2">
 <h2>Примеры ответов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id3">
+<h3>Успешный ответ<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
     &quot;status&quot;: true,
     &quot;errorMessage&quot;: null,
-    &quot;data&quot;: [
-        {
-            &quot;title&quot;: &quot;Семейный&quot;,
-            &quot;subscription_end_date&quot;: &quot;22 июля 2020&quot;
+    &quot;data&quot;: {
+        &quot;magazine_issue&quot;: {
+            &quot;id&quot;: 14,
+            &quot;magazine_id&quot;: 4,
+            &quot;title&quot;: &quot;Forbes Украина. Июль&quot;,
+            &quot;body&quot;: &quot;Lorem ipsum dolor sit amet&quot;,
+            &quot;issue_date&quot;: &quot;01 июля 2020&quot;,
+            &quot;cover_image&quot;: &quot;/storage/covers/4/JeOd8yoYhc6bdVPFnHXGOP1GkxMutzE0qq9PVx54.jpeg&quot;,
+            &quot;pdf_content_url&quot;: &quot;http://sjournal.milestns.beget.tech/api/v1/magazine-issues/14/pdf-content&quot;,
+            &quot;pdf_encoded_content_url&quot;: &quot;http://sjournal.milestns.beget.tech/api/v1/magazine-issues/14/encoded-pdf-content&quot;,
+            &quot;pdf_preview_url&quot;: &quot;http://sjournal.milestns.beget.tech/api/v1/magazine-issues/14/pdf-preview&quot;,
+            &quot;pdf_download_url&quot;: &quot;http://sjournal.milestns.beget.tech/api/v1/magazine-issues/14/pdf-download&quot;
         },
-        {
-            &quot;title&quot;: &quot;Мужской&quot;,
-            &quot;subscription_end_date&quot;: &quot;21 сентября 2020&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Детский&quot;,
-            &quot;subscription_end_date&quot;: &quot;06 июля 2020&quot;
-        }
-    ]
+        &quot;magazine_issues&quot;: [
+            {
+                &quot;id&quot;: 13,
+                &quot;title&quot;: &quot;Forbes Украина. Июнь&quot;,
+                &quot;issue_date&quot;: &quot;01 июня 2020&quot;,
+                &quot;cover_image&quot;: &quot;/storage/covers/4/9nuvcGZyZIzyZ3bAN6q7VkKjWs9foH7LqmUUD6EI.jpeg&quot;
+            }
+        ]
+    }
 }
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -208,10 +221,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="packet_magazine_issues.html" class="btn btn-neutral float-right" title="Выпуски издания по подписке" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="code_activation.html" class="btn btn-neutral float-left" title="Активация кода" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="packet_magazine_issues.html" class="btn btn-neutral float-left" title="Выпуски издания по подписке" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
