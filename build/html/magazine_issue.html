@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="prev" title="Выпуски издания по подписке" href="packet_magazine_issues.html" /> 
+    <link rel="prev" title="Выпуски издания" href="magazine_issues.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,9 +98,11 @@
 <li class="toctree-l1"><a class="reference internal" href="code_activation.html">Активация кода</a></li>
 <li class="toctree-l1"><a class="reference internal" href="my_subscriptions.html">Мои подписки</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packet_magazine_issues.html">Выпуски издания по подписке</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magazine_issues.html">Выпуски издания</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Выпуск издания</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">Примеры ответов</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Успешный ответ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Недостаточно прав для просмотра</a></li>
 </ul>
 </li>
 </ul>
@@ -190,6 +192,7 @@
             &quot;magazine_id&quot;: 4,
             &quot;title&quot;: &quot;Forbes Украина. Июль&quot;,
             &quot;body&quot;: &quot;Lorem ipsum dolor sit amet&quot;,
+            &quot;issue_number&quot;: &quot;№7&quot;,
             &quot;issue_date&quot;: &quot;01 июля 2020&quot;,
             &quot;cover_image&quot;: &quot;/storage/covers/4/JeOd8yoYhc6bdVPFnHXGOP1GkxMutzE0qq9PVx54.jpeg&quot;,
             &quot;pdf_content_url&quot;: &quot;http://sjournal.milestns.beget.tech/api/v1/magazine-issues/14/pdf-content&quot;,
@@ -210,6 +213,21 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="id4">
+<h3>Недостаточно прав для просмотра<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;status&quot;: false,
+    &quot;errorMessage&quot;: [
+        &quot;Недостаточно прав для просмотра данного издания | UK&quot;
+    ],
+    &quot;data&quot;: null
+}
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -222,7 +240,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="packet_magazine_issues.html" class="btn btn-neutral float-left" title="Выпуски издания по подписке" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="magazine_issues.html" class="btn btn-neutral float-left" title="Выпуски издания" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

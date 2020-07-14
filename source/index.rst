@@ -30,5 +30,6 @@
     code_activation
     my_subscriptions
     packet_magazine_issues
+    magazine_issues
     magazine_issue
    

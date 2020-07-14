@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Применение токенов &mdash; документация Smart Newspapers 1.0</title>
+  <title>Выпуски издания &mdash; документация Smart Newspapers 1.0</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="Сброс пароля. Шаг 1" href="password_reset_step_1.html" />
-    <link rel="prev" title="Logout" href="logout.html" /> 
+    <link rel="next" title="Выпуск издания" href="magazine_issue.html" />
+    <link rel="prev" title="Выпуски издания по подписке" href="packet_magazine_issues.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,15 +82,11 @@
             
             
               <p class="caption"><span class="caption-text">Авторизация</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="registration.html">Регистрация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="login.html">Login</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logout.html">Logout</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Применение токенов</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Авторизация с помощью токена</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Обработка ошибок</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="tokens.html">Применение токенов</a></li>
 <li class="toctree-l1"><a class="reference internal" href="password_reset_step_1.html">Сброс пароля. Шаг 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="password_reset_step_2.html">Сброс пароля. Шаг 2</a></li>
 </ul>
@@ -99,11 +95,17 @@
 <li class="toctree-l1"><a class="reference internal" href="localization.html">Локализация</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Контент</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="code_activation.html">Активация кода</a></li>
 <li class="toctree-l1"><a class="reference internal" href="my_subscriptions.html">Мои подписки</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packet_magazine_issues.html">Выпуски издания по подписке</a></li>
-<li class="toctree-l1"><a class="reference internal" href="magazine_issues.html">Выпуски издания</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Выпуски издания</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Примеры ответов</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Успешный ответ</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="magazine_issue.html">Выпуск издания</a></li>
 </ul>
 
@@ -150,13 +152,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Применение токенов</li>
+      <li>Выпуски издания</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/tokens.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/magazine_issues.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,31 +172,46 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>Применение токенов<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<div class="section" id="id2">
-<h2>Авторизация с помощью токена<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Полученный при авторизации/регистрации токен должен передаваться в заголовоке следующим образом:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Authorization: Bearer [token]
+<h1>Выпуски издания<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GET http://sjournal.milestns.beget.tech/api/v1/magazine-issues
 </pre></div>
 </div>
-</div>
+<div class="section" id="id2">
+<h2>Примеры ответов<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <div class="section" id="id3">
-<h2>Обработка ошибок<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
-<p>По умолчанию, время жизни токена составляет 30 дней. По истечению этого срока, а так же при любых других проблемах, связанных с его чтением (попадание в блэклист, невозможность парсинга закодированной в нем информации, и т.д), попытка его использования приведет к приведенной ниже ошибке.</p>
-<p>Текст ошибки <code class="docutils literal notranslate"><span class="pre">errorMessage</span></code>, в отличии от <code class="docutils literal notranslate"><span class="pre">статуса</span></code>, может меняться и, по возможности, должен быть залогирован на этапах тестирования, для удобства отлавливания багов.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 401
+<h3>Успешный ответ<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Status: 200
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
-    &quot;status&quot;: false,
-    &quot;errorMessage&quot;: [
-        &quot;Token Signature could not be verified.&quot;
-    ],
-    &quot;data&quot;: null
+    &quot;status&quot;: true,
+    &quot;errorMessage&quot;: null,
+    &quot;data&quot;: {
+        &quot;magazine_issues&quot;: [
+            {
+                &quot;id&quot;: 13,
+                &quot;title&quot;: &quot;Forbes Украина. Июнь&quot;,
+                &quot;issue_date&quot;: &quot;01 июня 2020&quot;,
+                &quot;cover_image&quot;: &quot;/storage/covers/4/GbB1eug9MNy36xYAEYRKNotXebUCI7AIdYS7eJoc.jpeg&quot;
+            },
+            {
+                &quot;id&quot;: 14,
+                &quot;title&quot;: &quot;Forbes Украина. Июль&quot;,
+                &quot;issue_date&quot;: &quot;01 июля 2020&quot;,
+                &quot;cover_image&quot;: &quot;/storage/covers/4/uhqdTi6kC30GERUZ4Hvv3QjsD21QQxyX7nzpqif8.jpeg&quot;
+            },
+            {
+                &quot;id&quot;: 26,
+                &quot;title&quot;: &quot;Детский 1. Июнь&quot;,
+                &quot;issue_date&quot;: &quot;06 августа 2020&quot;,
+                &quot;cover_image&quot;: null
+            }
+        ]
+    }
 }
 </pre></div>
 </div>
-<p>В случае возникновения ошибки, необходимо попытаться снова авторизовать пользователя методом <a class="reference internal" href="login.html#login-label"><span class="std std-ref">Login</span></a></p>
+</div>
 </div>
 </div>
 
@@ -206,10 +223,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="password_reset_step_1.html" class="btn btn-neutral float-right" title="Сброс пароля. Шаг 1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="magazine_issue.html" class="btn btn-neutral float-right" title="Выпуск издания" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="logout.html" class="btn btn-neutral float-left" title="Logout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="packet_magazine_issues.html" class="btn btn-neutral float-left" title="Выпуски издания по подписке" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

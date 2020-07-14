@@ -26,6 +26,7 @@
                 "magazine_id": 4,
                 "title": "Forbes Украина. Июль",
                 "body": "Lorem ipsum dolor sit amet",
+                "issue_number": "№7",
                 "issue_date": "01 июля 2020",
                 "cover_image": "/storage/covers/4/JeOd8yoYhc6bdVPFnHXGOP1GkxMutzE0qq9PVx54.jpeg",
                 "pdf_content_url": "http://sjournal.milestns.beget.tech/api/v1/magazine-issues/14/pdf-content",
@@ -43,3 +44,21 @@
             ]
         }
     }
+
+Недостаточно прав для просмотра
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  code-block:: none
+
+    Status: 200
+
+..  code-block:: none
+
+    {
+        "status": false,
+        "errorMessage": [
+            "Недостаточно прав для просмотра данного издания | UK"
+        ],
+        "data": null
+    }
+
