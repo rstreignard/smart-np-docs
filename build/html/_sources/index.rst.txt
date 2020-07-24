@@ -32,4 +32,5 @@
     packet_magazine_issues
     magazine_issues
     magazine_issue
+    partners
    
